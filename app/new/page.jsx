@@ -1,16 +1,17 @@
 "use client";
 import { addDoc, collection } from "firebase/firestore";
 import { useState } from "react";
+import { db } from "../../lib/firebase";
 
 export default function newBlog() {
-  const [title, setTitle] = useState();
-  const [contents, setContents] = useState();
+  const [title, setTitle] = useState("");
+  const [contents, setContents] = useState("");
 
   async function handleAdd() {
     try {
       const docRef = await addDoc(collection(db, "newblog"), {
-        title,
-        contents,
+        title: title,
+        contents: contents,
       });
       console.log("Document written with ID: ", docRef.id);
     } catch (e) {
@@ -43,7 +44,9 @@ export default function newBlog() {
           </label>
         </div>
         <div>
-          <button onClick={handleAdd}>送信</button>
+          <button type="button" onClick={handleAdd}>
+            送信
+          </button>
         </div>
       </form>
       <div>

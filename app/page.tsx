@@ -1,8 +1,8 @@
 import Weather from "./components/Weather"
 import Blog from "./components/Blog"
+import {app} from "./../lib/firebase"
 
 export default function Home() {
-  
   return (
     <>
     <div>
